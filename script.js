@@ -1,7 +1,7 @@
 document.getElementById('generateButton').addEventListener('click', async function() {
   try {
     // Fetch moon phase data
-    const moonPhaseResponse = await fetch('https://api.ipgeolocation.io/astronomy?apiKey=YOUR_API_KEY');
+    const moonPhaseResponse = await fetch('https://api.ipgeolocation.io/astronomy?apiKey=9ce55516d5354e2f872c48da8fe47923');
     const moonPhaseData = await moonPhaseResponse.json();
     const moonPhaseElement = document.getElementById('moonPhase');
     moonPhaseElement.innerHTML = 'Current Moon Phase: ' + moonPhaseData.moon_phase + ' (' + moonPhaseData.moon_illumination + ' illuminated)';
