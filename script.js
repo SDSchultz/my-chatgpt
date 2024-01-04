@@ -1,4 +1,16 @@
-document.getElementById('generateButton').addEventListener('click', function() {
+document.getElementById('generateButton').addEventListener('click', async function() {
+  try {
+    // Fetch moon phase data
+    const moonPhaseResponse = await fetch('https://api.ipgeolocation.io/astronomy?apiKey=YOUR_API_KEY');
+    const moonPhaseData = await moonPhaseResponse.json();
+    const moonPhaseElement = document.getElementById('moonPhase');
+    moonPhaseElement.innerHTML = 'Current Moon Phase: ' + moonPhaseData.moon_phase + ' (' + moonPhaseData.moon_illumination + ' illuminated)';
+  } catch (error) {
+    console.error('Error fetching moon phase:', error);
+    const moonPhaseElement = document.getElementById('moonPhase');
+    moonPhaseElement.innerHTML = 'Unable to fetch moon phase information.';
+  }
+
   // Generate numbers based on the existing method
   let whiteBalls = [];
   for (let i = 0; i < 5; i++) {
@@ -24,5 +36,7 @@ document.getElementById('generateButton').addEventListener('click', function() {
 
   const astrologicalSignIndex = (day <= 21) ? (month - 1) : month;
   const astrologicalSign = astrologicalSigns[astrologicalSignIndex];
-  astrologicalSignElement.innerHTML = 'Current Astrological Sign: ' + astrologicalSign;
+  if (astrologicalSignElement) {
+    astrologicalSignElement.innerHTML = 'Current Astrological Sign: ' + astrologicalSign;
+  }
 });
