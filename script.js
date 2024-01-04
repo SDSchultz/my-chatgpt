@@ -17,5 +17,5 @@ document.getElementById('generateButton').addEventListener('click', function() {
 
   // Placeholder for the PowerBall jackpot amount
   const jackpotElement = document.getElementById('jackpot');
-  jackpotElement.innerHTML = 'Current Jackpot: $100 Million (Example)';
+  jackpotElement.innerHTML = 'Current Jackpot: $35 Million';
 });
